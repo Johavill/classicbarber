@@ -1,0 +1,239 @@
+"use client";
+
+import Image from "next/image";
+import { useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import FocusTrap from "focus-trap-react";
+import type { Barber } from "@/lib/data";
+import { BUSINESS } from "@/lib/data";
+
+type Props = {
+  barber: Barber;
+  onClose: () => void;
+};
+
+export default function PortafolioModal({ barber, onClose }: Props) {
+  const whatsappUrl = `https://wa.me/${BUSINESS.whatsapp}?text=Hola! Quiero reservar un turno con ${encodeURIComponent(barber.name.split(" ")[0])}`;
+
+  // Lock body scroll
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, []);
+
+  // Close on Escape
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    },
+    [onClose]
+  );
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [handleKeyDown]);
+
+  return (
+    <AnimatePresence>
+      <motion.div
+        className="fixed inset-0 z-50 flex items-center justify-center p-4"
+        onClick={onClose}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.25 }}
+        role="dialog"
+        aria-modal="true"
+        aria-label={`Portafolio de ${barber.name}`}
+        aria-describedby="modal-description"
+      >
+        {/* Backdrop */}
+        <div className="absolute inset-0 bg-[rgba(26,26,26,0.92)] backdrop-blur-sm" />
+
+        {/* Modal panel */}
+        <FocusTrap focusTrapOptions={{ allowOutsideClick: true }}>
+          <motion.div
+            className="relative z-10 w-full max-w-[800px] max-h-[90vh] overflow-y-auto rounded-lg border border-[rgba(197,160,89,0.3)] bg-[#1a1a1a] shadow-2xl scrollbar-hidden"
+            onClick={(e) => e.stopPropagation()}
+            initial={{ opacity: 0, scale: 0.92, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.92, y: 20 }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {/* Close button */}
+            <button
+              id="modal-close-btn"
+              onClick={onClose}
+              aria-label="Cerrar portafolio"
+              className="absolute top-4 right-4 z-20 flex w-10 h-10 items-center justify-center rounded-full border border-[rgba(197,160,89,0.3)] text-[#c5a059] hover:bg-[rgba(61,43,31,0.4)] transition-colors duration-200"
+            >
+              <i className="fa-solid fa-xmark text-lg" aria-hidden="true" />
+            </button>
+
+            {/* Header */}
+            <div className="flex flex-col items-center gap-3 px-8 lg:px-10 pt-16 pb-10 border-b border-[rgba(197,160,89,0.1)]">
+              <div className="px-4 py-1 rounded-full border border-[rgba(197,160,89,0.4)]">
+                <span className="text-[#c5a059] text-[10px] font-[family-name:var(--font-montserrat)] font-normal tracking-[3px] uppercase">
+                  {barber.badge}
+                </span>
+              </div>
+              <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl text-center leading-tight tracking-tight">
+                <span className="text-[#f5f5f0]">{barber.name.split(" ")[0]} </span>
+                <span className="text-[#c5a059] italic">&lsquo;The Blade&rsquo;</span>
+                <span className="text-[#f5f5f0]"> {barber.name.split(" ")[1] ?? ""}</span>
+              </h2>
+              <p id="modal-description" className="text-[rgba(245,245,240,0.6)] font-[family-name:var(--font-montserrat)] text-sm font-light tracking-[1.4px] uppercase text-center">
+                {barber.specialty}
+              </p>
+            </div>
+
+            {/* Gallery */}
+            <div className="p-6 lg:p-8 bg-[rgba(61,43,31,0.05)]">
+              <div className="grid grid-cols-2 gap-4">
+                {/* Left: tall main image */}
+                <div className="relative rounded-md border border-[rgba(61,43,31,0.3)] overflow-hidden h-[280px] md:h-[400px]">
+                  <Image
+                    src={barber.portfolioImages[0]}
+                    alt={`${barber.name} — trabajo destacado`}
+                    fill
+                    className="object-cover hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 50vw, 400px"
+                  />
+                </div>
+                {/* Right: two stacked */}
+                <div className="flex flex-col gap-4">
+                  <div className="relative rounded-md border border-[rgba(61,43,31,0.3)] overflow-hidden flex-1">
+                    <Image
+                      src={barber.portfolioImages[1]}
+                      alt={`${barber.name} — corte de cabello con degradado`}
+                      fill
+                      className="object-cover hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 768px) 50vw, 200px"
+                    />
+                  </div>
+                  <div className="relative rounded-md border border-[rgba(61,43,31,0.3)] overflow-hidden flex-1">
+                    <Image
+                      src={barber.portfolioImages[2]}
+                      alt={`${barber.name} — perfil de barba esculpida`}
+                      fill
+                      className="object-cover hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 768px) 50vw, 200px"
+                    />
+                  </div>
+                </div>
+                {/* Bottom row */}
+                <div className="relative rounded-md border border-[rgba(61,43,31,0.3)] overflow-hidden h-40 md:h-44">
+                  <Image
+                    src={barber.portfolioImages[3]}
+                    alt={`${barber.name} — detalle de afeitado`}
+                    fill
+                    className="object-cover hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 50vw, 380px"
+                  />
+                </div>
+                <div className="relative rounded-md border border-[rgba(61,43,31,0.3)] overflow-hidden h-40 md:h-44">
+                  <Image
+                    src={barber.portfolioImages[4]}
+                    alt={`${barber.name} — estilo clásico`}
+                    fill
+                    className="object-cover hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 50vw, 380px"
+                  />
+                </div>
+              </div>
+              {barber.portfolioImages[5] && (
+                <div className="relative mt-4 rounded-md border border-[rgba(61,43,31,0.3)] overflow-hidden h-40">
+                  <Image
+                    src={barber.portfolioImages[5]}
+                    alt={`${barber.name} — acabado final`}
+                    fill
+                    className="object-cover hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, 760px"
+                  />
+                </div>
+              )}
+            </div>
+
+            {/* Stats + CTA */}
+            <div className="flex flex-col items-center gap-8 px-8 lg:px-10 py-10 bg-[#1a1a1a] border-t border-[rgba(197,160,89,0.1)]">
+              {/* Stats */}
+              <div className="flex items-center gap-8 lg:gap-12">
+                <div className="flex flex-col items-center gap-1">
+                  <span className="font-[family-name:var(--font-playfair)] text-2xl text-[#c5a059]">
+                    {barber.years}
+                  </span>
+                  <span className="text-[rgba(245,245,240,0.4)] font-[family-name:var(--font-montserrat)] text-[10px] tracking-[1px] uppercase">
+                    Años de Exp.
+                  </span>
+                </div>
+                <div className="w-px h-10 bg-[rgba(197,160,89,0.2)]" aria-hidden="true" />
+                <div className="flex flex-col items-center gap-1">
+                  <span className="font-[family-name:var(--font-playfair)] text-2xl text-[#c5a059]">
+                    {barber.cuts}
+                  </span>
+                  <span className="text-[rgba(245,245,240,0.4)] font-[family-name:var(--font-montserrat)] text-[10px] tracking-[1px] uppercase">
+                    Cortes Realizados
+                  </span>
+                </div>
+                <div className="w-px h-10 bg-[rgba(197,160,89,0.2)]" aria-hidden="true" />
+                <div className="flex flex-col items-center gap-1">
+                  <span className="font-[family-name:var(--font-playfair)] text-2xl text-[#c5a059]">
+                    {barber.rating}
+                  </span>
+                  <span className="text-[rgba(245,245,240,0.4)] font-[family-name:var(--font-montserrat)] text-[10px] tracking-[1px] uppercase">
+                    Valoración
+                  </span>
+                </div>
+              </div>
+
+              {/* WhatsApp CTA */}
+              <a
+                id="modal-whatsapp-cta"
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 px-10 lg:px-12 py-4 lg:py-5 bg-[#c5a059] rounded text-[#1a1a1a] font-[family-name:var(--font-montserrat)] font-bold text-sm tracking-[2.8px] uppercase hover:bg-[rgba(197,160,89,0.9)] transition-colors duration-300"
+              >
+                <span>Reservar con {barber.name.split(" ")[0]}</span>
+                <i className="fa-solid fa-calendar-days text-lg" aria-hidden="true" />
+              </a>
+
+              {/* Social links */}
+              <div className="flex items-center gap-6">
+                <a
+                  href={BUSINESS.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Seguir en Instagram"
+                  className="text-[rgba(245,245,240,0.4)] hover:text-[rgba(245,245,240,0.7)] transition-colors"
+                >
+                  <i className="fa-brands fa-instagram text-xl" aria-hidden="true" />
+                </a>
+                <a
+                  href={BUSINESS.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Seguir en Facebook"
+                  className="text-[rgba(245,245,240,0.4)] hover:text-[rgba(245,245,240,0.7)] transition-colors"
+                >
+                  <i className="fa-brands fa-facebook text-xl" aria-hidden="true" />
+                </a>
+                <a
+                  href={`https://wa.me/${BUSINESS.whatsapp}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Chat por WhatsApp"
+                  className="text-[rgba(245,245,240,0.4)] hover:text-[rgba(245,245,240,0.7)] transition-colors"
+                >
+                  <i className="fa-brands fa-whatsapp text-xl" aria-hidden="true" />
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        </FocusTrap>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
