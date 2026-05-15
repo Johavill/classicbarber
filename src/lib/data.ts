@@ -1,7 +1,7 @@
 /* ──────────────────────────────────────────────
    lib/data.ts — Central data store
    Cambia aquí textos, imágenes y datos del negocio
-────────────────────────────────────────────── */
+ ────────────────────────────────────────────── */
 
 export const BUSINESS = {
   name: process.env.NEXT_PUBLIC_BUSINESS_NAME ?? "Classic Barbería",
@@ -169,74 +169,85 @@ export type Barber = {
   cuts: string;
   rating: string;
   portfolioImages: string[];
+  slug: string;
+  phone?: string;
 };
 
 export const BARBERS: Barber[] = [
   {
     id: 1,
-    name: "Jhon B.",
-    title: "Master Barber & Fundador",
-    image:
-      "https://api.builder.io/api/v1/image/assets/TEMP/5891484848458f729626140391d966920364a7e1?width=779",
-    mobileImage:
-      "https://api.builder.io/api/v1/image/assets/TEMP/48b5661e63e8b5fb006095fcd0e654efc52f4bd0?width=560",
-    badge: "Master Stylist",
-    specialty: "Especialista en Afeitado Clásico y Degradados",
-    years: "12+",
-    cuts: "2.5k",
-    rating: "4.9/5",
-    portfolioImages: [
-      "https://api.builder.io/api/v1/image/assets/TEMP/47c9a97f75d581afc0ef497fbec5e1c697935d9b?width=925",
-      "https://api.builder.io/api/v1/image/assets/TEMP/5b9fb70bbff256124e7c1e315b14522f58814b43?width=447",
-      "https://api.builder.io/api/v1/image/assets/TEMP/1deee8133b874f8f2dadda47d5d90f6ad04c9fed?width=447",
-      "https://api.builder.io/api/v1/image/assets/TEMP/963aa641a1e032d22f12a279f3e91e513c0312ce?width=447",
-      "https://api.builder.io/api/v1/image/assets/TEMP/b9d2bd2907e6477374c83c8701eed72bcf9ddf61?width=447",
-      "https://api.builder.io/api/v1/image/assets/TEMP/c1efa40d94860e91bd2b80195ae49df2b608082f?width=447",
-    ],
-  },
-  {
-    id: 2,
-    name: "Mateo R.",
-    title: "Especialista en Navaja",
-    image:
-      "https://api.builder.io/api/v1/image/assets/TEMP/6dd504e21b0db9d86b349a75185f32df160de073?width=779",
-    mobileImage:
-      "https://api.builder.io/api/v1/image/assets/TEMP/8a8a06305cf1f32beea9bc6a585c97dbda08d09b?width=560",
-    badge: "Navaja Experta",
-    specialty: "Maestro en técnicas de navaja y afeitado clásico",
-    years: "8+",
-    cuts: "1.8k",
-    rating: "4.8/5",
-    portfolioImages: [
-      "https://api.builder.io/api/v1/image/assets/TEMP/5b9fb70bbff256124e7c1e315b14522f58814b43?width=447",
-      "https://api.builder.io/api/v1/image/assets/TEMP/47c9a97f75d581afc0ef497fbec5e1c697935d9b?width=925",
-      "https://api.builder.io/api/v1/image/assets/TEMP/963aa641a1e032d22f12a279f3e91e513c0312ce?width=447",
-      "https://api.builder.io/api/v1/image/assets/TEMP/b9d2bd2907e6477374c83c8701eed72bcf9ddf61?width=447",
-      "https://api.builder.io/api/v1/image/assets/TEMP/1deee8133b874f8f2dadda47d5d90f6ad04c9fed?width=447",
-      "https://api.builder.io/api/v1/image/assets/TEMP/c1efa40d94860e91bd2b80195ae49df2b608082f?width=447",
-    ],
-  },
-  {
-    id: 3,
-    name: "Jhonatan B.",
+    name: "Jhonathan Arley Cardona",
     title: "Estilista Clásico",
-    image:
-      "https://api.builder.io/api/v1/image/assets/TEMP/c3defbac7c798e2862f38296663ed356a6343676?width=779",
-    mobileImage:
-      "https://api.builder.io/api/v1/image/assets/TEMP/f33d670857c6affadaac91d92fe86aec50ceb901?width=560",
+    image: "https://res.cloudinary.com/dazruxlue/image/upload/v1778774405/Jhonatan_xj2jv7.jpg",
+    mobileImage: "https://res.cloudinary.com/dazruxlue/image/upload/v1778774405/Jhonatan_xj2jv7.jpg",
     badge: "Estilista Clásico",
-    specialty: "Experto en cortes clásicos y estilos contemporáneos",
+    specialty: "Corte de cabello y Barba",
     years: "6+",
     cuts: "1.2k",
     rating: "4.9/5",
-    portfolioImages: [
-      "https://api.builder.io/api/v1/image/assets/TEMP/1deee8133b874f8f2dadda47d5d90f6ad04c9fed?width=447",
-      "https://api.builder.io/api/v1/image/assets/TEMP/47c9a97f75d581afc0ef497fbec5e1c697935d9b?width=925",
-      "https://api.builder.io/api/v1/image/assets/TEMP/5b9fb70bbff256124e7c1e315b14522f58814b43?width=447",
-      "https://api.builder.io/api/v1/image/assets/TEMP/c1efa40d94860e91bd2b80195ae49df2b608082f?width=447",
-      "https://api.builder.io/api/v1/image/assets/TEMP/963aa641a1e032d22f12a279f3e91e513c0312ce?width=447",
-      "https://api.builder.io/api/v1/image/assets/TEMP/b9d2bd2907e6477374c83c8701eed72bcf9ddf61?width=447",
-    ],
+    portfolioImages: [],
+    slug: "jhonatan-b",
+    phone: "573137441721",
+  },
+  {
+    id: 2,
+    name: "Alexis López",
+    title: "Especialista en Cabello & Barba",
+    image: "https://res.cloudinary.com/dazruxlue/image/upload/v1778774528/Alexis_dkc1pr.jpg",
+    mobileImage: "https://res.cloudinary.com/dazruxlue/image/upload/v1778774528/Alexis_dkc1pr.jpg",
+    badge: "Estilo Moderno",
+    specialty: "Corte de cabello y Barba",
+    years: "5+",
+    cuts: "900",
+    rating: "4.8/5",
+    portfolioImages: [],
+    slug: "alexis-lopez",
+    phone: "573235296403",
+  },
+  {
+    id: 3,
+    name: "Helmer López",
+    title: "Maestro Barbero",
+    image: "https://res.cloudinary.com/dazruxlue/image/upload/v1778774446/Helmer_hy1lqd.jpg",
+    mobileImage: "https://res.cloudinary.com/dazruxlue/image/upload/v1778774446/Helmer_hy1lqd.jpg",
+    badge: "Senior Barber",
+    specialty: "Corte de cabello y Barba",
+    years: "10+",
+    cuts: "2.1k",
+    rating: "4.9/5",
+    portfolioImages: [],
+    slug: "helmer-lopez",
+    phone: "573008576763",
+  },
+  {
+    id: 4,
+    name: "Juan Carlos Restrepo",
+    title: "Experto en Barbería",
+    image: "https://res.cloudinary.com/dazruxlue/image/upload/v1778774493/JuanCarlos_hxbvgy.jpg",
+    mobileImage: "https://res.cloudinary.com/dazruxlue/image/upload/v1778774493/JuanCarlos_hxbvgy.jpg",
+    badge: "Classic Specialist",
+    specialty: "Corte de cabello y Barba",
+    years: "8+",
+    cuts: "1.5k",
+    rating: "4.7/5",
+    portfolioImages: [],
+    slug: "juan-carlos",
+    phone: "573143232008",
+  },
+  {
+    id: 5,
+    name: "Didier Hernandez G.",
+    title: "Master Barber",
+    image: "https://res.cloudinary.com/dazruxlue/image/upload/v1778774425/didier_y19f9m.jpg",
+    mobileImage: "https://res.cloudinary.com/dazruxlue/image/upload/v1778774425/didier_y19f9m.jpg",
+    badge: "Expert",
+    specialty: "Corte de cabello y Barba",
+    years: "7+",
+    cuts: "1.3k",
+    rating: "4.8/5",
+    portfolioImages: [],
+    slug: "didier-hernandez",
+    phone: "573215588411",
   },
 ];
 

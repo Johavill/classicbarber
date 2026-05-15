@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { BARBERS, type Barber } from "@/lib/data";
 import PortafolioModal from "./PortafolioModal";
@@ -14,6 +14,38 @@ import {
 
 export default function Portafolio() {
   const [selectedBarber, setSelectedBarber] = useState<Barber | null>(null);
+
+  // Sync state with URL hash for QR deep linking
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace("#", "");
+      if (hash) {
+        const barber = BARBERS.find((b) => b.slug === hash);
+        if (barber) {
+          setSelectedBarber(barber);
+        }
+      } else {
+        setSelectedBarber(null);
+      }
+    };
+
+    // Initial check
+    handleHashChange();
+
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
+
+  // Update hash when selecting manually
+  const handleSelectBarber = (barber: Barber | null) => {
+    if (barber) {
+      window.location.hash = barber.slug;
+    } else {
+      // Clear hash without scrolling to top if possible
+      window.history.pushState(null, "", window.location.pathname + window.location.search);
+      setSelectedBarber(null);
+    }
+  };
 
   return (
     <>
@@ -61,13 +93,13 @@ export default function Portafolio() {
                 key={barber.id}
                 variants={scaleIn}
                 className="relative rounded-lg overflow-hidden group cursor-pointer"
-                onClick={() => setSelectedBarber(barber)}
+                onClick={() => handleSelectBarber(barber)}
                 role="button"
                 tabIndex={0}
                 aria-label={`Ver portafolio de ${barber.name}`}
                 onKeyDown={(e) =>
                   (e.key === "Enter" || e.key === " ") &&
-                  setSelectedBarber(barber)
+                  handleSelectBarber(barber)
                 }
               >
                 <div className="relative h-[520px]">
@@ -75,7 +107,7 @@ export default function Portafolio() {
                     src={barber.image}
                     alt={`${barber.name} — ${barber.title}`}
                     fill
-                    className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                    className="object-cover object-center transition-all duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0 contrast-[1.1] brightness-[0.8] group-hover:brightness-100"
                     sizes="(max-width: 1280px) 33vw, 400px"
                   />
                 </div>
@@ -94,7 +126,7 @@ export default function Portafolio() {
                     className="w-full py-3 border border-[rgba(197,160,89,0.5)] rounded font-[family-name:var(--font-montserrat)] text-[#f5f5f0] text-sm tracking-[1.4px] uppercase hover:bg-[rgba(197,160,89,0.2)] hover:border-[#c5a059] transition-all duration-300"
                     onClick={(e) => {
                       e.stopPropagation();
-                      setSelectedBarber(barber);
+                      handleSelectBarber(barber);
                     }}
                   >
                     Ver Portafolio
@@ -115,20 +147,20 @@ export default function Portafolio() {
                   key={barber.id}
                   className="relative rounded-lg overflow-hidden cursor-pointer flex-shrink-0"
                   style={{ width: 280, height: 400 }}
-                  onClick={() => setSelectedBarber(barber)}
+                  onClick={() => handleSelectBarber(barber)}
                   role="button"
                   tabIndex={0}
                   aria-label={`Ver portafolio de ${barber.name}`}
                   onKeyDown={(e) =>
                     (e.key === "Enter" || e.key === " ") &&
-                    setSelectedBarber(barber)
+                    handleSelectBarber(barber)
                   }
                 >
                   <Image
                     src={barber.mobileImage}
                     alt={`${barber.name} — ${barber.title}`}
                     fill
-                    className="object-cover"
+                    className="object-cover grayscale contrast-[1.1] brightness-[0.8]"
                     sizes="280px"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-[rgba(26,26,26,0.1)] to-transparent" />
@@ -148,10 +180,10 @@ export default function Portafolio() {
       </section>
 
       {/* Portfolio Modal — rendered outside section to avoid stacking context issues */}
-      {selectedBarber && (
+          {selectedBarber && (
         <PortafolioModal
           barber={selectedBarber}
-          onClose={() => setSelectedBarber(null)}
+          onClose={() => handleSelectBarber(null)}
         />
       )}
     </>

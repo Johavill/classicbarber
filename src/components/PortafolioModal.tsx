@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import FocusTrap from "focus-trap-react";
 import type { Barber } from "@/lib/data";
 import { BUSINESS } from "@/lib/data";
+import LeadCapture from "./barberos/LeadCapture";
 
 type Props = {
   barber: Barber;
@@ -95,10 +96,10 @@ export default function PortafolioModal({ barber, onClose }: Props) {
                 {/* Left: tall main image */}
                 <div className="relative rounded-md border border-[rgba(61,43,31,0.3)] overflow-hidden h-[280px] md:h-[400px]">
                   <Image
-                    src={barber.portfolioImages[0]}
+                    src={barber.portfolioImages[0] || barber.image}
                     alt={`${barber.name} — trabajo destacado`}
                     fill
-                    className="object-cover hover:scale-105 transition-transform duration-500"
+                    className="object-cover hover:scale-105 transition-all duration-700 grayscale hover:grayscale-0 contrast-[1.1] brightness-[0.9]"
                     sizes="(max-width: 768px) 50vw, 400px"
                   />
                 </div>
@@ -188,17 +189,14 @@ export default function PortafolioModal({ barber, onClose }: Props) {
                 </div>
               </div>
 
-              {/* WhatsApp CTA */}
-              <a
-                id="modal-whatsapp-cta"
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 px-10 lg:px-12 py-4 lg:py-5 bg-[#c5a059] rounded text-[#1a1a1a] font-[family-name:var(--font-montserrat)] font-bold text-sm tracking-[2.8px] uppercase hover:bg-[rgba(197,160,89,0.9)] transition-colors duration-300"
-              >
-                <span>Reservar con {barber.name.split(" ")[0]}</span>
-                <i className="fa-solid fa-calendar-days text-lg" aria-hidden="true" />
-              </a>
+              {/* WhatsApp Lead Capture */}
+              <div className="w-full max-w-sm">
+                <LeadCapture 
+                  barberId={barber.id} 
+                  barberName={barber.name} 
+                  barberPhone={barber.phone} 
+                />
+              </div>
 
               {/* Social links */}
               <div className="flex items-center gap-6">
