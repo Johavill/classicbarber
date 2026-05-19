@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { BARBERS, type Barber } from "@/lib/data";
+import { cloudinaryLoader } from "@/lib/cloudinary";
 import PortafolioModal from "./PortafolioModal";
 import {
   fadeInUp,
@@ -104,8 +105,9 @@ export default function Portafolio() {
               >
                 <div className="relative h-[520px]">
                   <Image
+                    loader={cloudinaryLoader}
                     src={barber.image}
-                    alt={`${barber.name} — ${barber.title}`}
+                    alt={`${barber.name} — Barberos en Medellín`}
                     fill
                     className="object-cover object-center transition-all duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0 contrast-[1.1] brightness-[0.8] group-hover:brightness-100"
                     sizes="(max-width: 1280px) 33vw, 400px"
@@ -157,8 +159,9 @@ export default function Portafolio() {
                   }
                 >
                   <Image
+                    loader={cloudinaryLoader}
                     src={barber.mobileImage}
-                    alt={`${barber.name} — ${barber.title}`}
+                    alt={`${barber.name} — Barberos en Medellín`}
                     fill
                     className="object-cover grayscale contrast-[1.1] brightness-[0.8]"
                     sizes="280px"

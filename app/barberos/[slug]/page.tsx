@@ -3,6 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { BARBERS, BUSINESS } from "@/lib/data";
 import LeadCapture from "@/components/barberos/LeadCapture";
+import { getCloudinaryUrl } from "@/lib/cloudinary";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -55,7 +56,7 @@ export default async function BarberPage({ params }: Props) {
             <div className="absolute inset-0 rounded-full bg-[#D4AF37] blur-md opacity-50 animate-pulse" />
             <div className="relative w-48 h-48 rounded-full border-2 border-[#D4AF37] overflow-hidden p-1 bg-[#0A0A0A]">
               <Image
-                src={barber.mobileImage}
+                src={getCloudinaryUrl(barber.mobileImage, { width: 200, height: 200, crop: "c_fill" })}
                 alt={barber.name}
                 width={200}
                 height={200}
@@ -124,7 +125,7 @@ export default async function BarberPage({ params }: Props) {
                 className="relative aspect-square rounded-xl overflow-hidden border border-white/5 bg-white/5"
               >
                 <Image
-                  src={img}
+                  src={getCloudinaryUrl(img, { width: 300, height: 300, crop: "c_fill" })}
                   alt={`Corte ${idx + 1}`}
                   fill
                   className="object-cover hover:scale-110 transition-all duration-500 grayscale hover:grayscale-0"

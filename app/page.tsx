@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Servicios from "@/components/Servicios";
-import Productos from "@/components/Productos";
+// import Productos from "@/components/Productos";
 import Portafolio from "@/components/Portafolio";
 import QuienesSomos from "@/components/QuienesSomos";
 import Contacto from "@/components/Contacto";
@@ -16,7 +16,7 @@ export default function Home() {
         <Hero />
         <Servicios />
         <Portafolio />
-        <Productos />
+        {/* <Productos /> — Ocultado a solicitud */}
         <QuienesSomos />
         <Contacto />
       </main>

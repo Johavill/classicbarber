@@ -10,6 +10,9 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@tsparticles/engine": "^4.0.5",
+    "@tsparticles/react": "^4.0.5",
+    "@tsparticles/slim": "^4.0.5",
     "focus-trap-react": "^12.0.1",
     "framer-motion": "^12.38.0",
     "next": "16.2.6",

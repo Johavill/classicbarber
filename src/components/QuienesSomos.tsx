@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { TESTIMONIALS } from "@/lib/data";
+import { TESTIMONIALS, IMAGES } from "@/lib/data";
+import { cloudinaryLoader } from "@/lib/cloudinary";
 import {
   fadeInUp,
   staggerContainer,
@@ -158,22 +159,54 @@ export default function QuienesSomos() {
           {/* Decorative divider */}
           <motion.div
             variants={fadeInUp}
-            className="hidden lg:block w-px h-64 bg-gradient-to-b from-transparent via-[rgba(197,160,89,0.4)] to-transparent"
+            className="hidden lg:block w-px h-80 bg-gradient-to-b from-transparent via-[rgba(197,160,89,0.4)] to-transparent"
           />
 
-          {/* Quote block */}
+          {/* Quote & Image block */}
           <motion.div
             variants={fadeInUp}
-            className="flex-1 flex flex-col gap-6 lg:pl-6"
+            className="flex-1 flex flex-col gap-6 w-full lg:pl-6"
           >
-            <i className="fa-solid fa-scissors text-[#c5a059] text-4xl" aria-hidden="true" />
-            <blockquote className="font-[family-name:var(--font-playfair)] text-[#f5f5f0] text-2xl lg:text-3xl italic leading-relaxed">
-              &ldquo;El cabello es la corona que nunca te quitas. Nosotros nos
-              aseguramos de que siempre brille.&rdquo;
-            </blockquote>
-            <p className="font-[family-name:var(--font-montserrat)] text-[#c5a059] text-sm tracking-[2px] uppercase">
-              — Jhon B., Fundador
-            </p>
+            {/* Team group photo - responsive container with golden accent border */}
+            <div className="relative w-full aspect-[16/10] rounded-lg overflow-hidden border border-[rgba(197,160,89,0.3)] shadow-[0_20px_50px_rgba(0,0,0,0.5)] group">
+              {/* Desktop view */}
+              <div className="hidden sm:block absolute inset-0">
+                <Image
+                  loader={cloudinaryLoader}
+                  src={IMAGES.teamGroup}
+                  alt="Equipo de barberos profesionales en Medellín - Classic Barbería"
+                  fill
+                  quality={80}
+                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out group-hover:scale-[1.03]"
+                  sizes="(max-width: 1024px) 100vw, 500px"
+                />
+              </div>
+              {/* Mobile view */}
+              <div className="block sm:hidden absolute inset-0">
+                <Image
+                  loader={cloudinaryLoader}
+                  src={IMAGES.teamGroupMobile}
+                  alt="Los mejores barberos de Medellín - Classic Barbería"
+                  fill
+                  quality={80}
+                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out group-hover:scale-[1.03]"
+                  sizes="100vw"
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+            </div>
+
+            {/* Quote details */}
+            <div className="flex flex-col gap-4 mt-2">
+              <i className="fa-solid fa-scissors text-[#c5a059] text-3xl" aria-hidden="true" />
+              <blockquote className="font-[family-name:var(--font-playfair)] text-[#f5f5f0] text-xl lg:text-2xl italic leading-relaxed">
+                &ldquo;El cabello es la corona que nunca te quitas. Nosotros nos
+                aseguramos de que siempre brille.&rdquo;
+              </blockquote>
+              <p className="font-[family-name:var(--font-montserrat)] text-[#c5a059] text-sm tracking-[2px] uppercase">
+                — Jhon B., Fundador
+              </p>
+            </div>
           </motion.div>
         </motion.div>
       </div>

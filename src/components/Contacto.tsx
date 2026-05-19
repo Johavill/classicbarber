@@ -10,8 +10,23 @@ import {
   fadeInUp,
   VIEWPORT,
 } from "@/lib/animations";
-import GoogleMap from "@/components/GoogleMap";
-import FormularioContacto from "@/components/FormularioContacto";
+import dynamic from "next/dynamic";
+
+const GoogleMap = dynamic(() => import("@/components/GoogleMap"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-full min-h-[400px] bg-[#1e140f] animate-pulse flex items-center justify-center text-[rgba(245,245,240,0.4)] font-[family-name:var(--font-montserrat)] text-sm tracking-[1.5px] uppercase">
+      Cargando Mapa...
+    </div>
+  ),
+});
+
+const FormularioContacto = dynamic(() => import("@/components/FormularioContacto"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-[400px] bg-[#111111] animate-pulse rounded border border-[rgba(245,245,240,0.06)]" />
+  ),
+});
 
 export default function Contacto() {
   const whatsappUrl = `https://wa.me/${BUSINESS.whatsapp}?text=Hola! Me gustaría reservar un turno en Classic Barbería.`;
@@ -39,7 +54,7 @@ export default function Contacto() {
           {/* Background image */}
           <Image
             src={IMAGES.contactBg}
-            alt="Interior Classic Barbería — mobiliario antiguo y ambiente elegante"
+            alt="Barbería de lujo en Laureles, Medellín - Ambiente elegante"
             fill
             className="object-cover opacity-20"
             sizes="(max-width: 1024px) 100vw, 50vw"

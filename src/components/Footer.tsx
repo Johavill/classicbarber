@@ -44,7 +44,7 @@ export default function Footer() {
               </span>
             </a>
             <p className="font-[family-name:var(--font-montserrat)] text-[rgba(245,245,240,0.5)] text-sm font-light leading-relaxed max-w-xs">
-              La barbería de lujo en Recoleta, Buenos Aires. Tradición,
+              La barbería de lujo en Laureles, Medellín. Tradición,
               distinción y excelencia en cada visita.
             </p>
           </motion.div>
@@ -88,32 +88,7 @@ export default function Footer() {
             </div>
             {/* Social icons */}
             <div className="flex items-center gap-4 mt-2">
-              <a
-                href={BUSINESS.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Síguenos en Instagram"
-                id="footer-instagram"
-                className="flex w-10 h-10 items-center justify-center rounded-full border border-[#3d2b1f] text-[rgba(245,245,240,0.6)] hover:text-[#c5a059] hover:border-[rgba(197,160,89,0.4)] transition-all duration-200"
-              >
-                <i
-                  className="fa-brands fa-instagram text-base"
-                  aria-hidden="true"
-                />
-              </a>
-              <a
-                href={BUSINESS.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Síguenos en Facebook"
-                id="footer-facebook"
-                className="flex w-10 h-10 items-center justify-center rounded-full border border-[#3d2b1f] text-[rgba(245,245,240,0.6)] hover:text-[#c5a059] hover:border-[rgba(197,160,89,0.4)] transition-all duration-200"
-              >
-                <i
-                  className="fa-brands fa-facebook text-base"
-                  aria-hidden="true"
-                />
-              </a>
+              {/* Instagram y Facebook ocultos a solicitud del cliente */}
               <a
                 href={`https://wa.me/${BUSINESS.whatsapp}`}
                 target="_blank"
@@ -147,24 +122,7 @@ export default function Footer() {
             </span>
           </a>
           <div className="flex items-center gap-8">
-            <a
-              href={BUSINESS.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-              className="text-[rgba(245,245,240,0.6)] hover:text-[#c5a059] transition-colors text-xl"
-            >
-              <i className="fa-brands fa-instagram" aria-hidden="true" />
-            </a>
-            <a
-              href={BUSINESS.facebook}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Facebook"
-              className="text-[rgba(245,245,240,0.6)] hover:text-[#c5a059] transition-colors text-xl"
-            >
-              <i className="fa-brands fa-facebook" aria-hidden="true" />
-            </a>
+            {/* Redes sociales ocultas */}
             <a
               href={`https://wa.me/${BUSINESS.whatsapp}`}
               target="_blank"

@@ -14,9 +14,9 @@ export const BUSINESS = {
     "Av. 80 # 53 a 10, Laureles - Estadio, Medellín, Antioquia, Colombia",
   addressLine1: "Av. 80 # 53 a 10, Laureles - Estadio",
   addressLine2: "Medellín, Antioquia, Colombia",
-  phone: process.env.NEXT_PUBLIC_BUSINESS_PHONE ?? "+54 11 4567-8900",
-  email: process.env.NEXT_PUBLIC_BUSINESS_EMAIL ?? "reservas@nobleblade.com",
-  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "5491145678900",
+  phone: process.env.NEXT_PUBLIC_BUSINESS_PHONE ?? "+57 324 243 2321",
+  email: process.env.NEXT_PUBLIC_BUSINESS_EMAIL ?? "classicbarberias@gmail.com",
+  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "573242432321",
   instagram:
     process.env.NEXT_PUBLIC_INSTAGRAM_URL ??
     "https://instagram.com/classicbarberia",
@@ -28,7 +28,6 @@ export const BUSINESS = {
 
 export const NAV_LINKS = [
   { label: "Servicios", href: "#servicios" },
-  { label: "Boutique", href: "#productos" },
   { label: "Barberos", href: "#barberos" },
   { label: "Contacto", href: "#contacto" },
 ] as const;
@@ -45,43 +44,22 @@ export const SERVICES: Service[] = [
     icon: "fa-solid fa-scissors",
     title: "Corte Clásico",
     description:
-      "Corte de cabello personalizado con técnicas tradicionales adaptadas a sus facciones y estilo de vida profesional.",
-    price: "$2.500",
-  },
-  {
-    icon: "fa-solid fa-fire-flame-curved",
-    title: "Ritual de Toallas Calientes",
-    description:
-      "El clásico afeitado italiano con navaja, aceites esenciales y vapor para una piel perfecta.",
-    price: "$3.200",
+      "Corte personalizado con técnicas tradicionales y asesoramiento de visagismo para resaltar tus mejores facciones.",
+    price: "Incluye lavado",
   },
   {
     icon: "fa-solid fa-user-tie",
     title: "Atención Personalizada",
     description:
-      "Asesoramiento de imagen exclusivo adaptado a sus facciones y estilo de vida profesional.",
-    price: "$4.500",
+      "Asesoramiento de imagen exclusivo, diagnóstico capilar y bebidas de cortesía premium (Single Malt o espresso) para una experiencia sin prisa.",
+    price: "Incluye lavado",
   },
   {
-    icon: "fa-solid fa-martini-glass",
-    title: "Bebidas de Cortesía",
+    icon: "fa-solid fa-soap",
+    title: "Cuidado de Barba",
     description:
-      "Disfrute de un Single Malt o un espresso de especialidad mientras espera su turno.",
-    price: "Incluido",
-  },
-  {
-    icon: "fa-solid fa-spa",
-    title: "Tratamiento Facial",
-    description:
-      "Mascarillas hidratantes, exfoliación y cuidado post-afeitado con productos premium.",
-    price: "$2.800",
-  },
-  {
-    icon: "fa-solid fa-star",
-    title: "Experiencia Premium",
-    description:
-      "Paquete completo: corte, barba, tratamiento facial y bebida de cortesía incluida.",
-    price: "$7.500",
+      "Ritual completo de afeitado o perfilado con navaja, aceites esenciales premium, toallas calientes e hidratación de la piel.",
+    price: "Incluye lavado",
   },
 ];
 
@@ -178,8 +156,8 @@ export const BARBERS: Barber[] = [
     id: 1,
     name: "Jhonathan Arley Cardona",
     title: "Estilista Clásico",
-    image: "https://res.cloudinary.com/dazruxlue/image/upload/v1778774405/Jhonatan_xj2jv7.jpg",
-    mobileImage: "https://res.cloudinary.com/dazruxlue/image/upload/v1778774405/Jhonatan_xj2jv7.jpg",
+    image: "https://res.cloudinary.com/dazruxlue/image/upload/v1779209682/Jhonatan_xbxehc.jpg",
+    mobileImage: "https://res.cloudinary.com/dazruxlue/image/upload/v1779209682/Jhonatan_xbxehc.jpg",
     badge: "Estilista Clásico",
     specialty: "Corte de cabello y Barba",
     years: "6+",
@@ -267,7 +245,7 @@ export const TESTIMONIALS: Testimonial[] = [
   },
   {
     quote:
-      '"Llevo años buscando un barbero que entienda mi estilo. Lorenzo no solo corta el pelo, esculpe. El whisky de cortesía es un gran toque."',
+      '"Llevo años buscando un barbero que entienda mi estilo. Helmer no solo corta el pelo, esculpe. El whisky de cortesía es un gran toque."',
     name: "Diego S.",
     avatar:
       "https://api.builder.io/api/v1/image/assets/TEMP/584f3a52308299c1638a46c6743180c29ea4867e?width=96",
@@ -282,17 +260,20 @@ export const TESTIMONIALS: Testimonial[] = [
 ];
 
 export const HOURS = [
-  { days: "Mar - Vie:", time: "10:00 - 20:00", muted: false },
-  { days: "Sábados:", time: "09:00 - 18:00", muted: false },
-  { days: "Dom - Lun:", time: "Cerrado", muted: true },
+  { days: "Lunes - Sábado:", time: "08:00 - 21:00", muted: false },
+  { days: "Dom - Festivos:", time: "09:00 - 19:00", muted: false },
 ] as const;
 
 /* Builder.io image URLs used in sections */
 export const IMAGES = {
   heroBg:
-    "https://api.builder.io/api/v1/image/assets/TEMP/ae295e769875585ed1ddb7d9952933a8d9aa4500?width=2880",
+    "https://res.cloudinary.com/dazruxlue/image/upload/v1779209518/fondo_tl59ys.jpg",
   contactBg:
     "https://api.builder.io/api/v1/image/assets/TEMP/32845337765f6ea95327aeb029a3767ac8ce8b71?width=1440",
   mapBg:
     "https://api.builder.io/api/v1/image/assets/TEMP/9b477d6d1d27b4268ffb3a4e255d538f1cd3d283?width=1440",
+  teamGroup:
+    "https://res.cloudinary.com/dazruxlue/image/upload/v1779209683/grupal_bzh3ye.jpg",
+  teamGroupMobile:
+    "https://res.cloudinary.com/dazruxlue/image/upload/v1779209683/barberos1_lxczzu.jpg",
 } as const;

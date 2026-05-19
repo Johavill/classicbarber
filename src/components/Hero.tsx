@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { BUSINESS, IMAGES } from "@/lib/data";
+import { cloudinaryLoader } from "@/lib/cloudinary";
 import { fadeIn, fadeInUp, staggerContainer, VIEWPORT } from "@/lib/animations";
 
 export default function Hero() {
@@ -17,11 +18,12 @@ export default function Hero() {
       {/* Background image */}
       <div className="absolute inset-0">
         <Image
+          loader={cloudinaryLoader}
           src={IMAGES.heroBg}
-          alt="Classic Barbería — ambiente interior"
+          alt="Interior de Classic Barbería - La mejor barbería en Medellín"
           fill
           priority
-          quality={85}
+          quality={75}
           className="object-cover opacity-40"
           sizes="100vw"
         />

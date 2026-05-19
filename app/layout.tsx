@@ -23,14 +23,18 @@ const siteUrl =
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Classic Barbería | Cortes Premium en Laureles, Medellín",
-    template: "%s | Classic Barbería",
+    default: "Classic Barbería | La Mejor Barbería en Medellín, Laureles y Poblado",
+    template: "%s | Classic Barbería en Medellín",
   },
   description:
-    "La mejor barbería de lujo en Laureles, Medellín. Cortes clásicos, afeitado con navaja, ritual de toallas calientes y atención personalizada. Reserva tu turno por WhatsApp.",
+    "Descubre la mejor barbería de lujo en Medellín. Estamos en Laureles, muy cerca del Poblado y Envigado. Disfruta cortes clásicos, afeitado con navaja, ritual de toallas calientes y atención premium.",
   keywords: [
     "barbería Medellín",
+    "mejores barberías en Medellín",
     "barbería Laureles",
+    "barbería Poblado",
+    "barbería Envigado",
+    "barbería cerca de mi",
     "corte de cabello hombre Medellín",
     "afeitado clásico navaja",
     "barbería de lujo Colombia",
@@ -43,23 +47,23 @@ export const metadata: Metadata = {
     locale: "es_CO",
     url: siteUrl,
     siteName: "Classic Barbería",
-    title: "Classic Barbería | Cortes Premium en Laureles, Medellín",
+    title: "Classic Barbería | La Mejor Barbería en Medellín, Laureles y Poblado",
     description:
-      "La mejor barbería de lujo en Laureles, Medellín. Cortes clásicos, afeitado con navaja, ritual de toallas calientes y atención personalizada.",
+      "Descubre la mejor barbería de lujo en Medellín. Estamos en Laureles, muy cerca del Poblado y Envigado. Cortes premium y afeitado tradicional.",
     images: [
       {
         url: process.env.NEXT_PUBLIC_BUSINESS_IMAGE ?? `${siteUrl}/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: "Classic Barbería — Tradición y Distinción",
+        alt: "Classic Barbería en Medellín — Tradición y Distinción",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Classic Barbería | Cortes Premium en Laureles, Medellín",
+    title: "Classic Barbería | La Mejor Barbería en Medellín",
     description:
-      "La mejor barbería de lujo en Laureles, Medellín. Cortes clásicos, afeitado con navaja y atención personalizada.",
+      "La mejor barbería de lujo en Medellín (Laureles, Poblado). Cortes clásicos y atención personalizada.",
     images: [process.env.NEXT_PUBLIC_BUSINESS_IMAGE ?? `${siteUrl}/og-image.jpg`],
   },
   robots: {
@@ -87,6 +91,7 @@ export default function RootLayout({
     <html
       lang="es"
       className={`${playfair.variable} ${montserrat.variable}`}
+      suppressHydrationWarning
     >
       <head>
         {/* Font Awesome for icons */}
@@ -139,7 +144,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-screen flex flex-col bg-[#1a1a1a]">
+      <body className="min-h-screen flex flex-col bg-[#1a1a1a]" suppressHydrationWarning>
         {children}
       </body>
     </html>
