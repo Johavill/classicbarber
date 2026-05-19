@@ -5,7 +5,8 @@
    BezierDefinition = [number, number, number, number] (tuple, not number[])
 ────────────────────────────────────────────── */
 import type { Variants } from "framer-motion";
-import type { BezierDefinition } from "motion-utils";
+
+type BezierDefinition = [number, number, number, number];
 
 /** Custom cubic-bezier — typed as BezierDefinition tuple (not number[]) */
 const smoothEase: BezierDefinition = [0.22, 1, 0.36, 1];
