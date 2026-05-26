@@ -34,7 +34,7 @@ export const cloudinaryLoader = ({ src, width, quality }: ImageLoaderProps) => {
   }
 
   const q = quality || "auto";
-  const params = [`f_auto`, `q_${q}`, `w_${width}`, `c_limit`].join(",");
+  const params = [`f_auto`, `q_${q}`, `w_${width}`, `c_fill`, `g_auto`, `e_sharpen:30`].join(",");
 
   return `${parts[0]}/image/upload/${params}/${cleanPath}`;
 };

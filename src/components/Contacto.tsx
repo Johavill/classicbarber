@@ -175,13 +175,13 @@ export default function Contacto() {
           {/* Heading */}
           <motion.div variants={fadeInUp} className="flex flex-col gap-3">
             <p className="font-[family-name:var(--font-montserrat)] text-[#c5a059] text-xs tracking-[4px] uppercase">
-              Escríbenos
+              Reserva Express
             </p>
             <h3 className="font-[family-name:var(--font-playfair)] text-[#f5f5f0] text-3xl lg:text-4xl">
-              ¿Tienes alguna pregunta?
+              Agenda tu Turno en Segundos
             </h3>
             <p className="font-[family-name:var(--font-montserrat)] text-[rgba(245,245,240,0.5)] text-sm font-light leading-relaxed">
-              Completa el formulario y te responderemos a la brevedad.
+              Elige tu servicio, fecha, hora y barbero de preferencia. Te redirigiremos a WhatsApp con tu solicitud pre-armada al instante.
             </p>
           </motion.div>
 

@@ -1,13 +1,13 @@
 "use client";
 
 import Image from "next/image";
+import Script from "next/script";
 import { motion } from "framer-motion";
-import { TESTIMONIALS, IMAGES } from "@/lib/data";
+import { IMAGES } from "@/lib/data";
 import { cloudinaryLoader } from "@/lib/cloudinary";
 import {
   fadeInUp,
   staggerContainer,
-  scaleIn,
   VIEWPORT,
 } from "@/lib/animations";
 
@@ -19,6 +19,7 @@ export default function QuienesSomos() {
       aria-labelledby="testimonios-heading"
     >
       <div className="section-container">
+        <Script src="https://elfsightcdn.com/platform.js" async defer />
         {/* Section header */}
         <motion.div
           className="flex flex-col items-center gap-4 mb-16 lg:mb-20"
@@ -49,61 +50,15 @@ export default function QuienesSomos() {
           </motion.p>
         </motion.div>
 
-        {/* Testimonial cards */}
+        {/* Google Reviews Widget */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12"
-          variants={staggerContainer}
+          variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
+          className="w-full bg-[rgba(61,43,31,0.1)] p-4 rounded-lg border border-[rgba(61,43,31,0.3)] min-h-[400px]"
         >
-          {TESTIMONIALS.map((t) => (
-            <motion.div
-              key={t.name}
-              variants={scaleIn}
-              className="relative flex flex-col gap-8 p-8 lg:p-10 rounded-lg border border-[rgba(61,43,31,0.5)] bg-[rgba(61,43,31,0.2)] hover:border-[rgba(197,160,89,0.3)] transition-colors duration-300"
-            >
-              {/* Decorative quote */}
-              <i className="fa-solid fa-quote-left absolute top-6 left-8 text-4xl text-[rgba(197,160,89,0.2)]" aria-hidden="true" />
-
-              {/* Stars */}
-              <div className="flex gap-1 pt-4">
-                {[...Array(5)].map((_, i) => (
-                  <i
-                    key={i}
-                    className="fa-solid fa-star text-[#c5a059] text-xs"
-                    aria-hidden="true"
-                  />
-                ))}
-              </div>
-
-              {/* Quote */}
-              <p className="font-[family-name:var(--font-montserrat)] text-[rgba(245,245,240,0.8)] text-sm lg:text-base font-light italic leading-relaxed flex-1">
-                {t.quote}
-              </p>
-
-              {/* Author */}
-              <div className="flex items-center gap-4">
-                <div className="relative w-12 h-12 rounded-full overflow-hidden bg-[#3d2b1f] flex-shrink-0">
-                  <Image
-                    src={t.avatar}
-                    alt={`Foto de ${t.name}`}
-                    fill
-                    className="object-cover"
-                    sizes="48px"
-                  />
-                </div>
-                <div>
-                  <p className="font-[family-name:var(--font-playfair)] text-[#f5f5f0] text-lg">
-                    {t.name}
-                  </p>
-                  <p className="font-[family-name:var(--font-montserrat)] text-[rgba(245,245,240,0.4)] text-xs tracking-[1px] uppercase mt-0.5">
-                    Cliente verificado
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+          <div className="elfsight-app-4801c5af-c9a3-4af0-a8db-a52552b5b34e" data-elfsight-app-lazy></div>
         </motion.div>
 
         {/* About / Who we are blurb */}

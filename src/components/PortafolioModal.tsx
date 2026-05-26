@@ -7,6 +7,7 @@ import FocusTrap from "focus-trap-react";
 import type { Barber } from "@/lib/data";
 import { BUSINESS } from "@/lib/data";
 import LeadCapture from "./barberos/LeadCapture";
+import { cloudinaryLoader } from "@/lib/cloudinary";
 
 type Props = {
   barber: Barber;
@@ -90,71 +91,78 @@ export default function PortafolioModal({ barber, onClose }: Props) {
               </p>
             </div>
 
-            {/* Gallery */}
+            {/* Gallery Bento Grid (Optimized for Vertical Portrait Haircut Photos) */}
             <div className="p-6 lg:p-8 bg-[rgba(61,43,31,0.05)]">
-              <div className="grid grid-cols-2 gap-4">
-                {/* Left: tall main image */}
-                <div className="relative rounded-md border border-[rgba(61,43,31,0.3)] overflow-hidden h-[280px] md:h-[400px]">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[220px] md:auto-rows-[250px]">
+                {/* Image 1: Tall vertical portrait 1 (Row span 2) */}
+                <div className="relative rounded-md border border-[rgba(61,43,31,0.3)] overflow-hidden row-span-2 col-span-1">
                   <Image
+                    loader={cloudinaryLoader}
                     src={barber.portfolioImages[0] || barber.image}
                     alt={`${barber.name} — trabajo destacado`}
                     fill
-                    className="object-cover hover:scale-105 transition-all duration-700 grayscale hover:grayscale-0 contrast-[1.1] brightness-[0.9]"
-                    sizes="(max-width: 768px) 50vw, 400px"
+                    className="object-cover hover:scale-105 transition-all duration-700 contrast-[1.05] brightness-[0.9]"
+                    sizes="(max-width: 768px) 100vw, 400px"
                   />
                 </div>
-                {/* Right: two stacked */}
-                <div className="flex flex-col gap-4">
-                  <div className="relative rounded-md border border-[rgba(61,43,31,0.3)] overflow-hidden flex-1">
-                    <Image
-                      src={barber.portfolioImages[1]}
-                      alt={`${barber.name} — corte de cabello con degradado`}
-                      fill
-                      className="object-cover hover:scale-105 transition-transform duration-500"
-                      sizes="(max-width: 768px) 50vw, 200px"
-                    />
-                  </div>
-                  <div className="relative rounded-md border border-[rgba(61,43,31,0.3)] overflow-hidden flex-1">
-                    <Image
-                      src={barber.portfolioImages[2]}
-                      alt={`${barber.name} — perfil de barba esculpida`}
-                      fill
-                      className="object-cover hover:scale-105 transition-transform duration-500"
-                      sizes="(max-width: 768px) 50vw, 200px"
-                    />
-                  </div>
-                </div>
-                {/* Bottom row */}
-                <div className="relative rounded-md border border-[rgba(61,43,31,0.3)] overflow-hidden h-40 md:h-44">
+                {/* Image 2: Tall vertical portrait 2 (Row span 2) */}
+                <div className="relative rounded-md border border-[rgba(61,43,31,0.3)] overflow-hidden row-span-2 col-span-1">
                   <Image
+                    loader={cloudinaryLoader}
+                    src={barber.portfolioImages[1]}
+                    alt={`${barber.name} — corte de cabello con degradado`}
+                    fill
+                    className="object-cover hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, 400px"
+                  />
+                </div>
+                {/* Image 3: Tall vertical portrait 3 (Row span 2) */}
+                <div className="relative rounded-md border border-[rgba(61,43,31,0.3)] overflow-hidden row-span-2 col-span-1">
+                  <Image
+                    loader={cloudinaryLoader}
+                    src={barber.portfolioImages[2]}
+                    alt={`${barber.name} — perfil de barba esculpida`}
+                    fill
+                    className="object-cover hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, 400px"
+                  />
+                </div>
+                {/* Image 4: Square detail 1 (Row span 1) */}
+                <div className="relative rounded-md border border-[rgba(61,43,31,0.3)] overflow-hidden row-span-1 col-span-1">
+                  <Image
+                    loader={cloudinaryLoader}
                     src={barber.portfolioImages[3]}
                     alt={`${barber.name} — detalle de afeitado`}
                     fill
                     className="object-cover hover:scale-105 transition-transform duration-500"
-                    sizes="(max-width: 768px) 50vw, 380px"
+                    sizes="(max-width: 768px) 100vw, 400px"
                   />
                 </div>
-                <div className="relative rounded-md border border-[rgba(61,43,31,0.3)] overflow-hidden h-40 md:h-44">
+                {/* Image 5: Square detail 2 (Row span 1) */}
+                <div className="relative rounded-md border border-[rgba(61,43,31,0.3)] overflow-hidden row-span-1 col-span-1">
                   <Image
+                    loader={cloudinaryLoader}
                     src={barber.portfolioImages[4]}
                     alt={`${barber.name} — estilo clásico`}
                     fill
                     className="object-cover hover:scale-105 transition-transform duration-500"
-                    sizes="(max-width: 768px) 50vw, 380px"
+                    sizes="(max-width: 768px) 100vw, 400px"
                   />
                 </div>
+                {/* Image 6: Square detail 3 (Row span 1) */}
+                {barber.portfolioImages[5] && (
+                  <div className="relative rounded-md border border-[rgba(61,43,31,0.3)] overflow-hidden row-span-1 col-span-1">
+                    <Image
+                      loader={cloudinaryLoader}
+                      src={barber.portfolioImages[5]}
+                      alt={`${barber.name} — acabado final`}
+                      fill
+                      className="object-cover hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, 400px"
+                    />
+                  </div>
+                )}
               </div>
-              {barber.portfolioImages[5] && (
-                <div className="relative mt-4 rounded-md border border-[rgba(61,43,31,0.3)] overflow-hidden h-40">
-                  <Image
-                    src={barber.portfolioImages[5]}
-                    alt={`${barber.name} — acabado final`}
-                    fill
-                    className="object-cover hover:scale-105 transition-transform duration-500"
-                    sizes="(max-width: 768px) 100vw, 760px"
-                  />
-                </div>
-              )}
             </div>
 
             {/* Stats + CTA */}

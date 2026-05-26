@@ -3,7 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { BARBERS, BUSINESS } from "@/lib/data";
 import LeadCapture from "@/components/barberos/LeadCapture";
-import { getCloudinaryUrl } from "@/lib/cloudinary";
+import { getCloudinaryUrl, cloudinaryLoader } from "@/lib/cloudinary";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -122,13 +122,14 @@ export default async function BarberPage({ params }: Props) {
             {barber.portfolioImages.slice(0, 6).map((img, idx) => (
               <div 
                 key={idx} 
-                className="relative aspect-square rounded-xl overflow-hidden border border-white/5 bg-white/5"
+                className="relative aspect-square rounded-xl overflow-hidden border border-white/5 bg-[#0a0a0a]"
               >
                 <Image
-                  src={getCloudinaryUrl(img, { width: 300, height: 300, crop: "c_fill" })}
+                  loader={cloudinaryLoader}
+                  src={img}
                   alt={`Corte ${idx + 1}`}
                   fill
-                  className="object-cover hover:scale-110 transition-all duration-500 grayscale hover:grayscale-0"
+                  className="object-cover hover:scale-110 transition-all duration-500"
                 />
               </div>
             ))}

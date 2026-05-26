@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Montserrat } from "next/font/google";
 import "./globals.css";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -80,6 +81,16 @@ export const metadata: Metadata = {
   alternates: {
     canonical: siteUrl,
   },
+  icons: {
+    icon: [
+      { url: "/icon.png", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" }
+    ],
+    apple: "/icon.png",
+  },
+  verification: {
+    google: "6NBivR-9i1t6Z7iXFfpwyPjLzXymcKcUPvsj_n_4RF0",
+  },
 };
 
 export default function RootLayout({
@@ -94,6 +105,12 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        {/* Preconnect to cdnjs to download Font Awesome icons faster */}
+        <link
+          rel="preconnect"
+          href="https://cdnjs.cloudflare.com"
+          crossOrigin="anonymous"
+        />
         {/* Font Awesome for icons */}
         <link
           rel="stylesheet"
@@ -146,6 +163,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen flex flex-col bg-[#1a1a1a]" suppressHydrationWarning>
         {children}
+        <GoogleAnalytics />
       </body>
     </html>
   );
