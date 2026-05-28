@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { BUSINESS } from "@/lib/data";
 import { fadeInUp, staggerContainer, VIEWPORT } from "@/lib/animations";
+import { openBookingModal } from "@/lib/utils";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -89,19 +90,20 @@ export default function Footer() {
             {/* Social icons */}
             <div className="flex items-center gap-4 mt-2">
               {/* Instagram y Facebook ocultos a solicitud del cliente */}
-              <a
-                href={`https://wa.me/${BUSINESS.whatsapp}`}
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  openBookingModal();
+                }}
                 aria-label="Contáctanos por WhatsApp"
                 id="footer-whatsapp"
-                className="flex w-10 h-10 items-center justify-center rounded-full border border-[#3d2b1f] text-[rgba(245,245,240,0.6)] hover:text-[#25D366] hover:border-[rgba(37,211,102,0.4)] transition-all duration-200"
+                className="flex w-10 h-10 items-center justify-center rounded-full border border-[#3d2b1f] text-[rgba(245,245,240,0.6)] hover:text-[#25D366] hover:border-[rgba(37,211,102,0.4)] transition-all duration-200 focus:outline-none"
               >
                 <i
                   className="fa-brands fa-whatsapp text-base"
                   aria-hidden="true"
                 />
-              </a>
+              </button>
             </div>
           </motion.div>
         </div>
@@ -123,15 +125,16 @@ export default function Footer() {
           </a>
           <div className="flex items-center gap-8">
             {/* Redes sociales ocultas */}
-            <a
-              href={`https://wa.me/${BUSINESS.whatsapp}`}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                openBookingModal();
+              }}
               aria-label="WhatsApp"
-              className="text-[rgba(245,245,240,0.6)] hover:text-[#25D366] transition-colors text-xl"
+              className="text-[rgba(245,245,240,0.6)] hover:text-[#25D366] transition-colors text-xl focus:outline-none"
             >
               <i className="fa-brands fa-whatsapp" aria-hidden="true" />
-            </a>
+            </button>
           </div>
           <div className="w-full h-px bg-gradient-to-r from-transparent via-[rgba(197,160,89,0.3)] to-transparent" />
         </div>

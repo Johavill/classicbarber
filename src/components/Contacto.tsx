@@ -11,6 +11,7 @@ import {
   VIEWPORT,
 } from "@/lib/animations";
 import dynamic from "next/dynamic";
+import { openBookingModal } from "@/lib/utils";
 
 const GoogleMap = dynamic(() => import("@/components/GoogleMap"), {
   ssr: false,
@@ -18,13 +19,6 @@ const GoogleMap = dynamic(() => import("@/components/GoogleMap"), {
     <div className="w-full h-full min-h-[400px] bg-[#1e140f] animate-pulse flex items-center justify-center text-[rgba(245,245,240,0.4)] font-[family-name:var(--font-montserrat)] text-sm tracking-[1.5px] uppercase">
       Cargando Mapa...
     </div>
-  ),
-});
-
-const FormularioContacto = dynamic(() => import("@/components/FormularioContacto"), {
-  ssr: false,
-  loading: () => (
-    <div className="w-full h-[400px] bg-[#111111] animate-pulse rounded border border-[rgba(245,245,240,0.06)]" />
   ),
 });
 
@@ -129,16 +123,17 @@ export default function Contacto() {
 
               {/* CTAs */}
               <div className="flex flex-col sm:flex-row gap-4 pt-2">
-                <a
+                <button
                   id="contact-whatsapp-btn"
-                  href={whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-3 px-8 py-4 bg-[#25D366] rounded text-white font-[family-name:var(--font-montserrat)] font-bold text-sm tracking-[2px] uppercase hover:bg-[rgba(37,211,102,0.9)] transition-all duration-300 hover:shadow-[0_0_20px_rgba(37,211,102,0.3)]"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    openBookingModal();
+                  }}
+                  className="flex items-center justify-center gap-3 px-8 py-4 bg-[#25D366] rounded text-white font-[family-name:var(--font-montserrat)] font-bold text-sm tracking-[2px] uppercase hover:bg-[rgba(37,211,102,0.9)] transition-all duration-300 hover:shadow-[0_0_20px_rgba(37,211,102,0.3)] focus:outline-none"
                 >
                   <i className="fa-brands fa-whatsapp text-lg" aria-hidden="true" />
                   <span>Reservar por WhatsApp</span>
-                </a>
+                </button>
                 <a
                   id="contact-maps-btn"
                   href={mapsUrl}
@@ -163,32 +158,6 @@ export default function Contacto() {
         </motion.div>
       </motion.div>
 
-      {/* Bottom half — Contact form */}
-      <motion.div
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        viewport={VIEWPORT}
-        className="bg-[#111111] border-t border-[rgba(245,245,240,0.06)] px-6 lg:px-24 py-16 lg:py-24"
-      >
-        <div className="max-w-2xl mx-auto flex flex-col gap-10">
-          {/* Heading */}
-          <motion.div variants={fadeInUp} className="flex flex-col gap-3">
-            <p className="font-[family-name:var(--font-montserrat)] text-[#c5a059] text-xs tracking-[4px] uppercase">
-              Reserva Express
-            </p>
-            <h3 className="font-[family-name:var(--font-playfair)] text-[#f5f5f0] text-3xl lg:text-4xl">
-              Agenda tu Turno en Segundos
-            </h3>
-            <p className="font-[family-name:var(--font-montserrat)] text-[rgba(245,245,240,0.5)] text-sm font-light leading-relaxed">
-              Elige tu servicio, fecha, hora y barbero de preferencia. Te redirigiremos a WhatsApp con tu solicitud pre-armada al instante.
-            </p>
-          </motion.div>
-
-          {/* Form */}
-          <FormularioContacto />
-        </div>
-      </motion.div>
     </section>
   );
 }

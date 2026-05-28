@@ -7,6 +7,7 @@ import QuienesSomos from "@/components/QuienesSomos";
 import Contacto from "@/components/Contacto";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import ContactoModal from "@/components/ContactoModal";
 
 export default function Home() {
   return (
@@ -23,6 +24,8 @@ export default function Home() {
       <Footer />
       {/* Floating WhatsApp button — fixed on all screens */}
       <WhatsAppButton />
+      {/* Global Booking Modal */}
+      <ContactoModal />
     </>
   );
 }

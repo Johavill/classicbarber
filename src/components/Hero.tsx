@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { BUSINESS, IMAGES } from "@/lib/data";
 import { cloudinaryLoader } from "@/lib/cloudinary";
 import { fadeIn, fadeInUp, staggerContainer, VIEWPORT } from "@/lib/animations";
+import { openBookingModal } from "@/lib/utils";
 
 export default function Hero() {
   const whatsappUrl = `https://wa.me/${BUSINESS.whatsapp}`;
@@ -82,16 +83,17 @@ export default function Hero() {
 
         {/* Desktop CTA */}
         <motion.div variants={fadeInUp} className="hidden lg:flex mt-2">
-          <a
+          <button
             id="hero-cta-desktop"
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            onClick={(e) => {
+              e.preventDefault();
+              openBookingModal();
+            }}
             className="flex items-center gap-3 px-10 py-5 bg-[#c5a059] rounded text-[#1a1a1a] font-[family-name:var(--font-montserrat)] font-medium text-sm tracking-[2.8px] uppercase hover:bg-[rgba(197,160,89,0.9)] transition-all duration-300 hover:shadow-[0_0_30px_rgba(197,160,89,0.4)]"
           >
             <i className="fa-brands fa-whatsapp text-lg" aria-hidden="true" />
             <span>Agendar por WhatsApp</span>
-          </a>
+          </button>
         </motion.div>
 
         {/* Mobile CTAs */}
@@ -99,16 +101,17 @@ export default function Hero() {
           variants={fadeInUp}
           className="lg:hidden flex flex-col gap-4 w-full max-w-sm mt-2"
         >
-          <a
+          <button
             id="hero-cta-mobile"
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            onClick={(e) => {
+              e.preventDefault();
+              openBookingModal();
+            }}
             className="flex items-center justify-center gap-3 py-5 bg-[#c5a059] rounded-sm text-[#1a1a1a] font-[family-name:var(--font-montserrat)] font-bold text-sm tracking-[2.8px] uppercase"
           >
             <span>Reservar Turno</span>
             <i className="fa-solid fa-calendar-days" aria-hidden="true" />
-          </a>
+          </button>
           <a
             href="#servicios"
             className="flex items-center justify-center py-5 border border-[rgba(197,160,89,0.5)] rounded-sm text-[#c5a059] font-[family-name:var(--font-montserrat)] font-medium text-sm tracking-[2.8px] uppercase hover:border-[#c5a059] hover:bg-[rgba(197,160,89,0.1)] transition-all duration-300"

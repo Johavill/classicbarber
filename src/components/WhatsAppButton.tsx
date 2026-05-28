@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import { BUSINESS } from "@/lib/data";
+import { openBookingModal } from "@/lib/utils";
 
 export default function WhatsAppButton() {
   const [visible, setVisible] = useState(false);
@@ -13,8 +13,6 @@ export default function WhatsAppButton() {
     const timer = setTimeout(() => setVisible(true), 1000);
     return () => clearTimeout(timer);
   }, []);
-
-  const whatsappUrl = `https://wa.me/${BUSINESS.whatsapp}?text=Hola! Me gustaría obtener información sobre sus servicios.`;
 
   return (
     <AnimatePresence>
@@ -44,13 +42,14 @@ export default function WhatsAppButton() {
           </AnimatePresence>
 
           {/* Button */}
-          <motion.a
+          <motion.button
             id="whatsapp-floating-btn"
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            onClick={(e) => {
+              e.preventDefault();
+              openBookingModal();
+            }}
             aria-label="Contactar por WhatsApp"
-            className="flex w-14 h-14 items-center justify-center rounded-full bg-[#25D366] shadow-[0_4px_20px_rgba(37,211,102,0.4)] hover:shadow-[0_4px_30px_rgba(37,211,102,0.6)] transition-shadow duration-300"
+            className="flex w-14 h-14 items-center justify-center rounded-full bg-[#25D366] shadow-[0_4px_20px_rgba(37,211,102,0.4)] hover:shadow-[0_4px_30px_rgba(37,211,102,0.6)] transition-shadow duration-300 relative focus:outline-none"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             onMouseEnter={() => setShowTooltip(true)}
@@ -65,7 +64,7 @@ export default function WhatsAppButton() {
               transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
             />
             <i className="fa-brands fa-whatsapp text-white text-3xl relative z-10" aria-hidden="true" />
-          </motion.a>
+          </motion.button>
         </motion.div>
       )}
     </AnimatePresence>

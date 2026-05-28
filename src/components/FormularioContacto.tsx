@@ -5,7 +5,11 @@ import { motion } from "framer-motion";
 import { fadeInUp } from "@/lib/animations";
 import { SERVICES, BARBERS, BUSINESS } from "@/lib/data";
 
-export default function FormularioContacto() {
+interface FormularioContactoProps {
+  onSuccess?: () => void;
+}
+
+export default function FormularioContacto({ onSuccess }: FormularioContactoProps) {
   const [nombre, setNombre] = useState("");
   const [telefono, setTelefono] = useState("");
   const [servicio, setServicio] = useState(SERVICES[0]?.title || "");
@@ -70,7 +74,14 @@ export default function FormularioContacto() {
     window.open(whatsappUrl, "_blank", "noopener,noreferrer");
     setSubmitted(true);
 
-    // Reset success message after 5 seconds
+    // Trigger onSuccess callback if provided
+    if (onSuccess) {
+      setTimeout(() => {
+        onSuccess();
+      }, 2000);
+    }
+
+    // Reset success message after 5 seconds (safe cleanup)
     setTimeout(() => {
       setSubmitted(false);
     }, 6000);

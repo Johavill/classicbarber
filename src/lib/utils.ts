@@ -21,3 +21,12 @@ export function cn(...inputs: (string | undefined | null | boolean | Record<stri
 
   return classes.join(" ");
 }
+
+/**
+ * Dispara un evento nativo personalizado para abrir el modal global de Reserva Express.
+ */
+export function openBookingModal() {
+  if (typeof window !== "undefined") {
+    window.dispatchEvent(new CustomEvent("open-booking-modal"));
+  }
+}

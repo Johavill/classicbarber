@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { BUSINESS, NAV_LINKS } from "@/lib/data";
+import { openBookingModal } from "@/lib/utils";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -53,14 +54,17 @@ export default function Header() {
         </nav>
 
         {/* Desktop CTA */}
-        <a
-          href="#contacto"
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            openBookingModal();
+          }}
           id="header-cta"
           className="hidden lg:flex items-center gap-3 px-6 py-3 border border-[#c5a059] rounded text-[#c5a059] font-[family-name:var(--font-montserrat)] text-sm tracking-[1.4px] uppercase hover:bg-[#c5a059] hover:text-[#1a1a1a] transition-all duration-300"
         >
           <span>Reservar Ahora</span>
           <i className="fa-solid fa-calendar-days text-sm" aria-hidden="true" />
-        </a>
+        </button>
 
         {/* Mobile hamburger */}
         <button
@@ -91,13 +95,16 @@ export default function Header() {
               {link.label}
             </a>
           ))}
-          <a
-            href="#contacto"
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavClick();
+              openBookingModal();
+            }}
             className="flex items-center justify-center gap-3 py-4 border border-[#c5a059] rounded text-[#c5a059] font-[family-name:var(--font-montserrat)] text-sm tracking-[1.4px] uppercase hover:bg-[#c5a059] hover:text-[#1a1a1a] transition-all duration-300"
-            onClick={handleNavClick}
           >
             Reservar Ahora
-          </a>
+          </button>
         </div>
       </div>
     </header>
