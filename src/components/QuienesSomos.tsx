@@ -83,7 +83,7 @@ export default function QuienesSomos() {
             </h2>
             <p className="font-[family-name:var(--font-montserrat)] text-[rgba(245,245,240,0.7)] text-base font-light leading-relaxed">
               Classic Barbería nació de la pasión por el arte del barbero clásico.
-              Desde 2012, nuestro espacio en Recoleta se ha convertido en un refugio
+              Desde 2012, nuestro espacio en el barrio Laureles - Estadio, Medellín, Colombia, se ha convertido en un refugio
               para el caballero moderno que valora la tradición, el detalle y la
               experiencia premium.
             </p>

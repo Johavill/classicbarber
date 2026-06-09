@@ -175,28 +175,6 @@ export const BARBERS: Barber[] = [
     phone: "573137441721",
   },
   {
-    id: 2,
-    name: "Alexis López",
-    title: "Especialista en Cabello & Barba",
-    image: "https://res.cloudinary.com/dazruxlue/image/upload/v1778774528/Alexis_dkc1pr.jpg",
-    mobileImage: "https://res.cloudinary.com/dazruxlue/image/upload/v1778774528/Alexis_dkc1pr.jpg",
-    badge: "Estilo Moderno",
-    specialty: "Corte de cabello y Barba",
-    years: "5+",
-    cuts: "900",
-    rating: "4.8/5",
-    portfolioImages: [
-      "https://res.cloudinary.com/dazruxlue/image/upload/v1779811314/m2_xutqyj.jpg",
-      "https://res.cloudinary.com/dazruxlue/image/upload/v1779811313/m1_zuuzo3.jpg",
-      "https://res.cloudinary.com/dazruxlue/image/upload/v1779811312/4_lru76x.jpg",
-      "https://res.cloudinary.com/dazruxlue/image/upload/v1779811312/3_pz9nrs.jpg",
-      "https://res.cloudinary.com/dazruxlue/image/upload/v1779811310/5_iqgczw.jpg",
-      "https://res.cloudinary.com/dazruxlue/image/upload/v1779811309/6_tsyjom.jpg"
-    ],
-    slug: "alexis-lopez",
-    phone: "573235296403",
-  },
-  {
     id: 3,
     name: "Helmer López",
     title: "Maestro Barbero",
