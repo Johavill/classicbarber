@@ -14,9 +14,9 @@ export const BUSINESS = {
     "Av. 80 # 53 a 10, Laureles - Estadio, Medellín, Antioquia, Colombia",
   addressLine1: "Av. 80 # 53 a 10, Laureles - Estadio",
   addressLine2: "Medellín, Antioquia, Colombia",
-  phone: process.env.NEXT_PUBLIC_BUSINESS_PHONE ?? "+57 324 243 2321",
+  phone: process.env.NEXT_PUBLIC_BUSINESS_PHONE ?? "+57 301 515 6815",
   email: process.env.NEXT_PUBLIC_BUSINESS_EMAIL ?? "classicbarberias@gmail.com",
-  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "573242432321",
+  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "573015156815",
   instagram:
     process.env.NEXT_PUBLIC_INSTAGRAM_URL ??
     "https://instagram.com/classicbarberia",
