@@ -127,7 +127,8 @@ export default function RootLayout({
               name: process.env.NEXT_PUBLIC_BUSINESS_NAME ?? "Classic Barbería",
               image: process.env.NEXT_PUBLIC_BUSINESS_IMAGE ?? `${siteUrl}/og-image.jpg`,
               url: process.env.NEXT_PUBLIC_SITE_URL ?? siteUrl,
-              telephone: process.env.NEXT_PUBLIC_BUSINESS_PHONE ?? "+57XXXXXXXXXX",
+              // TODO: Confirm exact address (Schema vs Fresha) and TikTok link before production
+              telephone: process.env.NEXT_PUBLIC_BUSINESS_PHONE ?? "+57 301 515 6815",
               priceRange: "$$",
               address: {
                 "@type": "PostalAddress",

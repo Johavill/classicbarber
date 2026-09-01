@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://classicbarberia.com</loc><lastmod>2026-05-28T16:17:51.309Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://classicbarberia.com/icon.png</loc><lastmod>2026-05-28T16:17:51.310Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://classicbarberia.com</loc><lastmod>2026-08-27T21:37:38.517Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://classicbarberia.com/icon.png</loc><lastmod>2026-08-27T21:37:38.518Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://classicbarberia.com/#servicios</loc><lastmod>2026-08-27T21:37:38.518Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://classicbarberia.com/#nuestros-barberos</loc><lastmod>2026-08-27T21:37:38.518Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://classicbarberia.com/#portafolio</loc><lastmod>2026-08-27T21:37:38.518Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://classicbarberia.com/#contacto</loc><lastmod>2026-08-27T21:37:38.518Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>
